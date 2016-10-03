@@ -1,0 +1,12 @@
+t a/Dockerfile b/Dockerfile
+index 951c0cf..e47908c 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -40,6 +40,7 @@ RUN apt-get update && apt-get install -y \
+ 	createrepo \
+ 	curl \
+ 	dpkg-sig \
++	gcc-mingw-w64 \
+ 	git \
+ 	iptables \
+ 	libapparmor-dev \

@@ -1,0 +1,83 @@
+Things I am not proud of
+Cross Compiling static cgo binaries from Linux to anything
+
+Jess Frazelle
+Software Engineer, Google
+https://jessfraz.com
+@jessfraz
+
+* I've made some things...
+
+This talk is not going to talk about the contributions I am most proud of, but the ones that I made in pain and suffering.
+
+* One of the reasons we love Go
+
+- static binaries
+- static binaries
+- static binaries
+
+Docker has always distributed static binaries, along with now, in the Linux packages at least, you get dynamic binaries.
+
+* First, there is one thing you have to know about me...
+
+When someone says something _cannot_ be done, that just makes me want to do it more.
+
+* And 1 thing you need to know about the docker release process...
+
+We build the releases for all arches on Linux, and only Linux, for simplicity of the release process.
+
+* From Linux to Windows
+
+* Let's travel back in time...
+
+to when we started shipping Windows binaries with cgo.
+
+We had this comment in our build code, which left everyone wanting to _not_ be the one to touch that part of the code
+
+.code code/windows-hack.sh
+
+* To me this is an invitation
+
+We shouldn't have to build the windows binaries on a different machine than Linux, this should be possible with some:
+
+- `go build` flags
+- `LDFLAGS`
+- LOVE
+
+* So I RTFM and opened a pull request
+
+.image /code/windows-PR.png
+
+* The patch
+
+.code code/windows-PR.diff
+
+* The patch
+
+.code code/windows-PR2.diff
+
+* The patch
+
+.code code/windows-PR3.diff
+
+* So that was windows... what about Darwin...
+
+ARE YOU CRAZY!? Yes.
+
+* From Linux to Darwin
+
+* Darwin: making the impossible possible
+
+You need:
+- clang
+- OSX SDK
+
+.code code/osx-sdk.Dockerfile
+
+* Compiling
+
+.code code/hack-binary.sh
+
+* You can also dlopen YOURSELF
+
+.link https://github.com/jessfraz/macgyver github.com/jessfraz/macgyver

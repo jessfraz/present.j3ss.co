@@ -1,0 +1,12 @@
+diff --git a/hack/make/cross b/hack/make/cross
+index b5eab68..ea8eee6 100644
+--- a/hack/make/cross
++++ b/hack/make/cross
+@@ -5,6 +5,7 @@ set -e
+ declare -A daemonSupporting
+ daemonSupporting=(
+ 	[linux/amd64]=1
++	[windows/amd64]=1
+ )
+
+ # if we have our linux/amd64 version compiled, let's symlink it in
